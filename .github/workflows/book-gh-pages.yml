@@ -31,7 +31,7 @@ jobs:
       - name: "Build documentation book"
         run: |
           nix build '.#docs' --print-build-logs
-          cp -Lr --no-preserve=mode,ownership ./result/ ./book
+          cp -Lr --no-preserve=mode,ownership ./result/share/doc/epnix/html ./book
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
