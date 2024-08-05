@@ -10,5 +10,7 @@
       packages.x86_64-linux.docs = pkgs.callPackage ./docs.nix { };
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+
+      actions = import ./actions.nix { inherit pkgs; };
     };
 }
