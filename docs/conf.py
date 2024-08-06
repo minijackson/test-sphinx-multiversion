@@ -12,7 +12,7 @@ from pathlib import Path
 project = "EPNix test"
 copyright = "2024, myself"
 author = "myself"
-release = "24.05"
+release = "nixos-24.05"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -28,6 +28,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 html_theme = "furo"
 html_static_path = ["_static"]
+html_baseurl = f"https://minijackson.github.io/test-sphinx-multiversion/{release}/"
 
 html_sidebars = {
     "**": [
@@ -47,17 +48,11 @@ html_context = {}
 
 versions = Path("./versions.json")
 if versions.exists():
-    current: str
-    if release == "dev":
-        current = "dev"
-    else:
-        current = f"nixos-{release}"
-
     with versions.open() as f:
         html_context["versions"] = json.load(f)
 
     # Mark current version as current
     current_version = next(
-        el for el in html_context["versions"] if el["name"] == current
+        el for el in html_context["versions"] if el["name"] == release
     )
     current_version["current"] = True
