@@ -15,6 +15,7 @@ stdenvNoCC.mkDerivation {
       myst-parser
       sphinx
       sphinx-copybutton
+      sphinxext-opengraph
     ])
     ++ [ installShellFiles ];
 
